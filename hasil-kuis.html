@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hasil Kuis – Next Gen AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/hasil-kuis.css"/>
+</head>
+<body>
+<div class="scene">
+
+  <!-- ROBOT KIRI -->
+  <div class="robot-left">
+    <img src="assets/robot-pojok-kiri.png" alt="Robot Kiri"/>
+  </div>
+
+  <!-- ROBOT KANAN -->
+  <div class="robot-right">
+    <img src="assets/robot-kanan.png" alt="Robot Kanan"/>
+  </div>
+
+  <!-- KARTU HASIL -->
+  <div class="hasil-card">
+
+    <div class="trophy" id="trophy">🏆</div>
+
+    <h2 class="hasil-title" id="hasilTitle">Hasil Kuis</h2>
+
+    <div class="skor-besar">
+      <span id="skorAngka">0</span>
+      <span class="skor-dari">/ <span id="totalAngka">5</span></span>
+    </div>
+
+    <div class="kategori-badge" id="kategoriBadge"></div>
+
+    <p class="ringkasan" id="ringkasan"></p>
+
+    <div class="btn-group">
+      <button class="ulang-btn" onclick="window.location.replace('kuis.html')">
+        🔄 Ulangi Kuis
+      </button>
+      <button class="menu-btn" onclick="window.location.replace('menu.html')">
+        🏠 Menu Utama
+      </button>
+    </div>
+
+  </div>
+
+</div>
+<script src="js/hasil.kuis.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; font-family: 'Poppins', sans-serif; overflow: hidden; }
+
+.scene {
+  width: 100vw; height: 100vh;
+  background-image: url('../assets/background.png');
+  background-size: cover; background-position: center;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+}
+
+/* ROBOT */
+.robot-left {
+  position: absolute; bottom: 0; left: 0;
+  width: clamp(120px,14vw,200px); z-index: 0;
+  animation: bobble 4s ease-in-out infinite;
+  pointer-events: none;
+}
+.robot-right {
+  position: absolute; bottom: 0; right: 0;
+  width: clamp(120px,14vw,200px); z-index: 0;
+  animation: bobble 4s 1s ease-in-out infinite;
+  pointer-events: none;
+}
+.robot-left img, .robot-right img { width: 100%; object-fit: contain; }
+
+/* DIALOG */
+.dialog-card {
+  background: white; border-radius: 28px;
+  padding: 40px 44px; width: 100%; max-width: 420px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 16px;
+  box-shadow: 0 16px 48px rgba(80,60,200,.2);
+  animation: popIn .6s cubic-bezier(.34,1.56,.64,1) both;
+  position: relative; z-index: 2; text-align: center;
+}
+
+.dialog-icon {
+  font-size: 56px;
+  animation: wave 1s ease-in-out infinite alternate;
+}
+
+.dialog-title {
+  font-family: 'Nunito', sans-serif; font-weight: 900;
+  font-size: clamp(22px,2.8vw,30px); color: #1a2a6c;
+}
+
+.dialog-desc {
+  font-size: clamp(13px,1.4vw,15px);
+  color: #5a6aaa; line-height: 1.7;
+}
+
+.btn-group {
+  display: flex; flex-direction: column;
+  gap: 10px; width: 100%; margin-top: 6px;
+}
+
+.tidak-btn {
+  background: #f0f4ff; color: #4f5fcf;
+  font-family: 'Nunito', sans-serif; font-weight: 800;
+  font-size: 15px; border: 2px solid #c5d0ff;
+  border-radius: 50px; padding: 14px;
+  cursor: pointer; transition: transform .2s, background .2s;
+}
+.tidak-btn:hover { background: #e0e8ff; transform: translateY(-2px); }
+
+.ya-btn {
+  background: linear-gradient(135deg, #f77b7b, #f44336);
+  color: white; font-family: 'Nunito', sans-serif;
+  font-weight: 800; font-size: 15px; border: none;
+  border-radius: 50px; padding: 14px;
+  cursor: pointer; box-shadow: 0 4px 16px rgba(244,67,54,.3);
+  transition: transform .2s;
+}
+.ya-btn:hover { transform: translateY(-2px); }
+.ya-btn:active { transform: scale(.97); }
+
+@keyframes popIn {
+  from { opacity:0; transform: scale(.8); }
+  to   { opacity:1; transform: scale(1); }
+}
+@keyframes bobble {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes wave {
+  from { transform: rotate(-10deg); }
+  to   { transform: rotate(10deg); }
+}

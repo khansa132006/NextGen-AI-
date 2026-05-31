@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu Utama – Next Gen AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/menu.css"/>
+</head>
+<body>
+<div class="scene">
+
+  <!-- ROBOT KIRI -->
+  <div class="robot-left">
+    <img src="assets/robot-pojok-kiri.png" alt="Robot Kiri"/>
+  </div>
+
+  <!-- ROBOT KANAN -->
+  <div class="robot-right">
+    <img src="assets/robot-kanan.png" alt="Robot Kanan"/>
+  </div>
+
+  <!-- HEADER SAPA (kiri atas) -->
+  <div class="header">
+    <img src="assets/logo.png" class="header-logo" alt="logo"/>
+    <div class="header-text">
+      <span class="hai">Hai, <span id="namaUser"></span>! 👋</span>
+      <span class="kelas" id="kelasUser"></span>
+    </div>
+  </div>
+
+  <!-- TOMBOL KANAN ATAS -->
+  <div class="top-right">
+    <button class="top-btn" onclick="window.location.href='index.html'" title="Kembali ke Beranda">
+      <span>🏠</span> Beranda
+    </button>
+  </div>
+
+  <!-- JUDUL -->
+  <div class="judul">
+    <h1>Mau Belajar Apa Hari Ini?</h1>
+    <p>Pilih salah satu menu di bawah ini untuk mulai!</p>
+  </div>
+
+  <!-- GRID MENU -->
+  <div class="menu-grid">
+
+    <button class="menu-card" onclick="bukaMenu('petunjuk')">
+      <div class="menu-icon">📋</div>
+      <div class="menu-label">Petunjuk</div>
+    </button>
+
+    <button class="menu-card" onclick="bukaMenu('materi')">
+      <div class="menu-icon">📚</div>
+      <div class="menu-label">Materi</div>
+    </button>
+
+    <button class="menu-card" onclick="bukaMenu('fakta')">
+      <div class="menu-icon">🤖</div>
+      <div class="menu-label">Fakta Seru AI</div>
+    </button>
+
+    <button class="menu-card" onclick="bukaMenu('game')">
+      <div class="menu-icon">🎮</div>
+      <div class="menu-label">Game</div>
+    </button>
+
+    <button class="menu-card" onclick="bukaMenu('kuis')">
+      <div class="menu-icon">🎯</div>
+      <div class="menu-label">Kuis</div>
+    </button>
+
+    <button class="menu-card" onclick="bukaMenu('tentang')">
+      <div class="menu-icon">ℹ️</div>
+      <div class="menu-label">Tentang</div>
+    </button>
+
+  </div>
+
+</div>
+<script src="js/menu.js"></script>
+</body>
+</html>

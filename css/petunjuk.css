@@ -1,0 +1,264 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.scene {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/background.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 60px 20px 16px;
+  overflow: hidden;
+}
+
+/* ───────── HEADER ───────── */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: white;
+  border-radius: 50px;
+  padding: 10px 24px;
+  box-shadow: 0 4px 20px rgba(100,120,220,.18);
+  animation: slideDown .5s cubic-bezier(.34,1.56,.64,1) both;
+  margin-bottom: 2px;
+}
+
+.page-icon {
+  font-size: 20px;
+}
+
+.page-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(16px, 1.8vw, 20px);
+  color: #1a2a6c;
+}
+
+/* ───────── LIST PETUNJUK ───────── */
+
+.petunjuk-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  max-width: 750px;
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+}
+
+.petunjuk-item {
+  background: white;
+  border-radius: 14px;
+  padding: 9px 15px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  box-shadow: 0 3px 12px rgba(100,120,220,.1);
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideIn .5s cubic-bezier(.34,1.56,.64,1) forwards;
+  transition: transform .2s, box-shadow .2s;
+  flex-shrink: 0;
+}
+
+.petunjuk-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 5px 18px rgba(100,120,220,.18);
+}
+
+/* ───────── NOMOR ───────── */
+
+.item-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7b9ef7, #9a78f5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  color: white;
+  box-shadow: 0 3px 10px rgba(120,100,240,.3);
+}
+
+/* ───────── TEKS ───────── */
+
+.item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-text strong {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  color: #1a2a6c;
+}
+
+.item-text span {
+  font-size: 12px;
+  color: #5a6aaa;
+  line-height: 1.4;
+}
+
+/* ───────── ANIMASI ───────── */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ───────── ROBOT ───────── */
+
+.robot-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: clamp(120px, 14vw, 200px);
+  z-index: 0;
+  animation: bobble 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.robot-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: clamp(120px, 14vw, 200px);
+  z-index: 0;
+  animation: bobble 4s 1s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.robot-left img,
+.robot-right img {
+  width: 100%;
+  object-fit: contain;
+}
+
+@keyframes bobble {
+  0%,100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ───────── TOMBOL KEMBALI ───────── */
+
+.back-top {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  color: #4f5fcf;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(100,120,220,.18);
+  transition: transform .2s, box-shadow .2s;
+  animation: slideDown .5s cubic-bezier(.34,1.56,.64,1) both;
+  z-index: 10;
+}
+
+.back-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100,120,220,.25);
+}
+
+.back-top:active {
+  transform: scale(.96);
+}
+
+.back-top .arrow {
+  font-size: 18px;
+  transition: transform .2s;
+}
+
+.back-top:hover .arrow {
+  transform: translateX(-3px);
+}
+
+/* ───────── LAYER ───────── */
+
+.page-header,
+.petunjuk-list,
+.back-btn {
+  position: relative;
+  z-index: 2;
+}
+
+/* ───────── SCROLLBAR ───────── */
+
+.petunjuk-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.petunjuk-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.petunjuk-list::-webkit-scrollbar-thumb {
+  background: #c5d0ff;
+  border-radius: 10px;
+}

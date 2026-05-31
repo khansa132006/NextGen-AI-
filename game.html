@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game – Next Gen AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/game.css"/>
+</head>
+<body>
+<div class="scene">
+
+  <button class="back-top" onclick="window.location.href='menu.html'">
+    <span class="arrow">←</span> Menu Utama
+  </button>
+
+  <div class="robot-left">
+    <img src="assets/robot-pojok-kiri.png" alt="Robot Kiri"/>
+  </div>
+  <div class="robot-right">
+    <img src="assets/robot-kanan.png" alt="Robot Kanan"/>
+  </div>
+
+  <div class="page-header">
+    <span class="page-icon">🎮</span>
+    <span class="page-title">Game Interaktif</span>
+  </div>
+
+  <p class="sub-desc">Pilih game yang ingin kamu mainkan!</p>
+
+  <div class="game-grid">
+
+    <div class="game-card card-drag" style="animation-delay:.1s" onclick="window.location.href='game-drag.html'">
+      <div class="card-icon-wrap">
+        <span class="card-icon">🧩</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Drag &amp; Drop</div>
+        <div class="card-desc">Cocokkan konsep AI dengan definisinya!</div>
+        <div class="play-btn">▶ Main Sekarang</div>
+      </div>
+    </div>
+
+    <div class="game-card card-tebak" style="animation-delay:.2s" onclick="window.location.href='game-tebak.html'">
+      <div class="card-icon-wrap">
+        <span class="card-icon">🖼️</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Tebak Gambar</div>
+        <div class="card-desc">Lihat gambar AI dan tebak namanya!</div>
+        <div class="play-btn">▶ Main Sekarang</div>
+      </div>
+    </div>
+
+    <div class="game-card card-memory" style="animation-delay:.3s" onclick="window.location.href='game-memory.html'">
+      <div class="card-icon-wrap">
+        <span class="card-icon">🃏</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Memory Card</div>
+        <div class="card-desc">Temukan pasangan kartu bertema AI!</div>
+        <div class="play-btn">▶ Main Sekarang</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

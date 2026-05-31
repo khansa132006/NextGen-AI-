@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keluar – Next Gen AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/keluar.css"/>
+</head>
+<body>
+<div class="scene">
+
+  <!-- ROBOT KIRI -->
+  <div class="robot-left">
+    <img src="assets/robot-kiri.png" alt="Robot Kiri"/>
+  </div>
+
+  <!-- ROBOT KANAN -->
+  <div class="robot-right">
+    <img src="assets/robot-kanan.png" alt="Robot Kanan"/>
+  </div>
+
+  <!-- DIALOG KONFIRMASI -->
+  <div class="dialog-card">
+    <div class="dialog-icon">👋</div>
+    <h2 class="dialog-title">Mau Keluar?</h2>
+    <p class="dialog-desc">
+      Yakin ingin keluar dari Next Gen AI?<br>
+      Sampai jumpa lagi ya!
+    </p>
+    <div class="btn-group">
+      <button class="tidak-btn" onclick="window.location.href='menu.html'">
+        Tidak, Lanjut Belajar
+      </button>
+      <button class="ya-btn" onclick="keluarApp()">
+        Ya, Keluar 👋
+      </button>
+    </div>
+  </div>
+
+</div>
+<script src="js/keluar.js"></script>
+</body>
+</html>

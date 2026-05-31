@@ -1,0 +1,130 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Next Gen AI</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="scene">
+
+  <!-- ════════════════════════════════════════
+       💬 GREETING PILL — atas tengah
+  ════════════════════════════════════════ -->
+  <div class="greeting-pill">
+    <img src="assets/top-ai.png" alt="Hai! Yuk Belajar AI Bersama!"/>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       💬 SPEECH BUBBLE KIRI
+  ════════════════════════════════════════ -->
+  <div class="bubble-left">
+    <img src="assets/bubble-kiri.png" alt="AI Itu Apasih?"/>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       💬 SPEECH BUBBLE KANAN
+  ════════════════════════════════════════ -->
+  <div class="bubble-right">
+    <img src="assets/bubble-kanan.png" alt="Yuk Kenali AI!"/>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       ⭐ DEKORASI
+  ════════════════════════════════════════ -->
+  <div class="deco deco-star1">
+    <img src="assets/bintang.png" alt="Bintang"/>
+  </div>
+
+  <div class="deco deco-heart1">
+    <img src="assets/hati.png" alt="Hati"/>
+  </div>
+
+  <div class="deco deco-heart2">
+    <img src="assets/hati.png" alt="Hati"/>
+  </div>
+
+  <div class="deco deco-star2">
+    <img src="assets/bintang.png" alt="Bintang"/>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       🤖 ROBOT KIRI
+  ════════════════════════════════════════ -->
+  <div class="robot-left">
+    <img src="assets/robot-kiri.png" alt="Robot Kiri"/>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       🤖 ROBOT KANAN
+  ════════════════════════════════════════ -->
+  <div class="robot-right">
+    <img src="assets/robot-kanan.png" alt="Robot Kanan"/>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       📝 KONTEN TENGAH
+  ════════════════════════════════════════ -->
+  <div class="center">
+
+    <!-- JUDUL -->
+    <h1 class="main-title">
+      NEXT GEN <span class="ai">AI</span>
+    </h1>
+
+    <!-- SUBTITLE -->
+    <p class="subtitle">
+      KENALI &amp; GUNAKAN <span class="blue">AI</span> DENGAN BIJAK
+    </p>
+
+    <!-- DESKRIPSI -->
+    <p class="description">
+      Belajar kecerdasan buatan dengan cara yang seru,<br>
+      interaktif, dan mudah dipahami oleh semua kalangan.
+    </p>
+
+    <!-- TOMBOL -->
+   <button class="play-btn" id="btnPlay">
+      PLAY
+    </button>
+
+  </div>
+
+</div>
+
+<!-- OVERLAY FORM -->
+<div class="overlay" id="overlay">
+  <div class="form-card">
+    <button class="close-btn" id="btnClose">✕</button>
+    <h2>✏️ Masukkan Data Kamu</h2>
+    <p>Yuk isi nama dan kelasmu sebelum mulai belajar AI!</p>
+
+    <div class="input-group">
+      <label for="inputNama">👤 Nama</label>
+      <input type="text" id="inputNama" placeholder="Contoh: Budi Santoso"/>
+    </div>
+
+    <div class="input-group">
+      <label for="inputKelas">🏫 Kelas</label>
+      <input type="text" id="inputKelas" placeholder="Contoh: 8A / Kelas 9B"/>
+    </div>
+
+    <button class="mulai-btn" id="btnMulai">MULAI BELAJAR 🚀</button>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kuis – Next Gen AI</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="css/kuis.css"/>
+</head>
+<body>
+
+<div class="scene">
+
+  <!-- Tombol kembali -->
+  <button class="back-top" onclick="window.location.href='menu.html'">
+    <span class="arrow">←</span> Menu Utama
+  </button>
+
+  <!-- Header -->
+  <div class="page-header">
+    <span class="page-icon">🎯</span>
+    <span class="page-title">Kuis AI</span>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap">
+    <div class="progress-info">
+      <span id="nomorSoal">Soal 1 / 5</span>
+      <span id="skorInfo">Skor: 0</span>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <!-- Card Soal -->
+  <div class="soal-card" id="soalCard">
+    <p class="pertanyaan" id="pertanyaan"></p>
+    <div class="pilihan-grid" id="pilihanGrid"></div>
+  </div>
+
+  <!-- Notifikasi -->
+  <div class="notif" id="notif"></div>
+
+</div>
+
+<script src="js/kuis.js"></script>
+
+</body>
+</html>

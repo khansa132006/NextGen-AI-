@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Memory Card – Next Gen AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/game-memory.css"/>
+</head>
+<body>
+<div class="scene">
+
+  <button class="back-top" onclick="window.location.href='game.html'">
+    <span class="arrow">←</span> Pilih Game
+  </button>
+
+  <div class="page-header">
+    <span class="page-icon">🃏</span>
+    <span class="page-title">Memory Card</span>
+  </div>
+
+  <div class="info-bar">
+    <div class="info-item">⏱ <span id="timer">60</span>s</div>
+    <div class="info-item">✅ <span id="pasang">0</span> / <span id="totalPasang">4</span> pasang</div>
+    <div class="info-item">🔄 <span id="giliran">0</span> giliran</div>
+  </div>
+
+  <div class="board" id="board"></div>
+
+  <button class="ulang-btn" onclick="mulaiGame()">🔄 Ulangi</button>
+
+  <!-- HASIL OVERLAY -->
+  <div class="hasil-overlay" id="hasilOverlay">
+    <div class="hasil-card">
+      <div class="hasil-trophy" id="hasilTrophy">🏆</div>
+      <div class="hasil-judul" id="hasilJudul">Game Selesai!</div>
+      <div class="hasil-detail" id="hasilDetail"></div>
+      <div class="hasil-btns">
+        <button class="btn-ulang" onclick="mulaiGame()">🔄 Ulangi</button>
+        <button class="btn-menu" onclick="window.location.href='game.html'">🎮 Menu Game</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="js/game-memory.js"></script>
+</body>
+</html>

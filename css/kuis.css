@@ -1,0 +1,323 @@
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.scene{
+  width:100vw;
+  height:100vh;
+  background-image:url('../assets/background.png');
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  gap:16px;
+  padding:65px 20px 20px;
+  overflow:hidden;
+}
+
+/* =========================
+   TOMBOL KEMBALI
+========================= */
+
+.back-top{
+  position:absolute;
+  top:20px;
+  left:24px;
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  background:white;
+  border:none;
+  border-radius:50px;
+
+  padding:10px 20px;
+
+  font-family:'Nunito',sans-serif;
+  font-weight:800;
+  font-size:14px;
+
+  color:#4f5fcf;
+  cursor:pointer;
+
+  box-shadow:0 4px 16px rgba(100,120,220,.18);
+  transition:.2s;
+
+  z-index:10;
+  animation:slideDown .5s both;
+}
+
+.back-top:hover{
+  transform:translateY(-2px);
+}
+
+.arrow{
+  transition:.2s;
+}
+
+.back-top:hover .arrow{
+  transform:translateX(-3px);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  background:white;
+  border-radius:50px;
+
+  padding:12px 26px;
+
+  box-shadow:0 4px 20px rgba(100,120,220,.18);
+
+  animation:slideDown .5s both;
+}
+
+.page-icon{
+  font-size:24px;
+}
+
+.page-title{
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:26px;
+  color:#1a2a6c;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-wrap{
+  width:100%;
+  max-width:650px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:6px;
+
+  animation:fadeUp .5s .1s both;
+}
+
+.progress-info{
+  display:flex;
+  justify-content:space-between;
+
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+
+  font-size:16px;
+  color:#1a2a6c;
+}
+
+.progress-track{
+  width:100%;
+  height:10px;
+
+  background:rgba(255,255,255,.45);
+
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  width:0%;
+  height:100%;
+
+  background:linear-gradient(
+    90deg,
+    #6f8ef7,
+    #9d7cf7
+  );
+
+  border-radius:20px;
+  transition:.4s ease;
+}
+
+/* =========================
+   CARD SOAL
+========================= */
+
+.soal-card{
+  background:white;
+
+  width:100%;
+  max-width:650px;
+
+  border-radius:24px;
+
+  padding:28px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:20px;
+
+  box-shadow:0 10px 35px rgba(100,120,220,.15);
+
+  animation:fadeUp .5s .15s both;
+}
+
+.pertanyaan{
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+
+  font-size:24px;
+
+  color:#1a2a6c;
+
+  line-height:1.5;
+  text-align:center;
+}
+
+/* =========================
+   PILIHAN
+========================= */
+
+.pilihan-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.pilihan-btn{
+  background:#f7f9ff;
+
+  border:2px solid #dde4ff;
+  border-radius:14px;
+
+  padding:16px 12px;
+
+  font-family:'Nunito',sans-serif;
+  font-weight:800;
+
+  font-size:16px;
+
+  color:#1a2a6c;
+
+  cursor:pointer;
+
+  transition:.2s;
+  text-align:center;
+  line-height:1.4;
+}
+
+.pilihan-btn:hover{
+  background:#eef2ff;
+  border-color:#7b9ef7;
+  transform:translateY(-2px);
+}
+
+.pilihan-btn.benar{
+  background:#e8f5e9;
+  border-color:#4caf50;
+  color:#2e7d32;
+}
+
+.pilihan-btn.salah{
+  background:#fdecea;
+  border-color:#f44336;
+  color:#c62828;
+}
+
+.pilihan-btn:disabled{
+  cursor:not-allowed;
+  transform:none;
+}
+
+/* =========================
+   NOTIFIKASI
+========================= */
+
+.notif{
+  position:fixed;
+  top:20px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  background:white;
+
+  border-radius:50px;
+
+  padding:10px 28px;
+
+  font-family:'Nunito',sans-serif;
+  font-weight:800;
+
+  font-size:15px;
+
+  box-shadow:0 6px 24px rgba(0,0,0,.15);
+
+  z-index:99;
+
+  opacity:0;
+  transition:.3s;
+
+  pointer-events:none;
+}
+
+.notif.show{
+  opacity:1;
+}
+
+.notif.benar{
+  color:#2e7d32;
+}
+
+.notif.salah{
+  color:#c62828;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes slideDown{
+  from{
+    opacity:0;
+    transform:translateY(-20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}

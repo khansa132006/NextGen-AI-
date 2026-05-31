@@ -1,0 +1,611 @@
+/* style.css */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ══════════════════════════════
+   🖼️ BACKGROUND
+══════════════════════════════ */
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  
+  background-image: url('../assets/background.png');
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* ══════════════════════════════
+   💬 GREETING PILL
+══════════════════════════════ */
+.greeting-pill {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 68px;
+  z-index: 10;
+
+  animation: slideDown .6s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+.greeting-pill img {
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ══════════════════════════════
+   💬 BUBBLE KIRI
+══════════════════════════════ */
+.bubble-left {
+  position: absolute;
+  top: 35%;
+  left: 5%;
+
+  width: clamp(140px, 14vw, 200px);
+
+  z-index: 6;
+
+  animation: popIn .5s .3s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+.bubble-left img {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* ══════════════════════════════
+   💬 BUBBLE KANAN
+══════════════════════════════ */
+.bubble-right {
+  position: absolute;
+  top: 25%;
+  right: 5%;
+
+  width: clamp(130px, 13vw, 190px);
+
+  z-index: 6;
+
+  animation: popIn .5s .5s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+.bubble-right img {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* ══════════════════════════════
+   🤖 ROBOT KIRI
+══════════════════════════════ */
+.robot-left {
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+
+  width: clamp(300px, 16vw, 300px);
+
+  z-index: 7;
+
+  animation:
+    bobble 4s ease-in-out infinite,
+    fadeUp .7s .1s both;
+}
+
+.robot-left img {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* ══════════════════════════════
+   🤖 ROBOT KANAN
+══════════════════════════════ */
+.robot-right {
+  position: absolute;
+  bottom: 0;
+  right: 0%;
+
+  width: clamp(340px, 20vw, 340px);
+
+  z-index: 7;
+
+  animation:
+    bobble 4s 1s ease-in-out infinite,
+    fadeUp .7s .2s both;
+}
+
+.robot-right img {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* ══════════════════════════════
+   ⭐ DEKORASI
+══════════════════════════════ */
+.deco {
+  position: absolute;
+  z-index: 5;
+
+  animation: float 3s ease-in-out infinite;
+}
+
+.deco img {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* Posisi dekorasi */
+.deco-star1 {
+  top: 14%;
+  left: 11%;
+  width: clamp(30px,3.5vw,52px);
+  animation-delay: 0s;
+}
+
+.deco-heart1 {
+  top: 14%;
+  right: 11%;
+  width: clamp(26px,3vw,44px);
+  animation-delay: .5s;
+}
+
+.deco-heart2 {
+  top: 54%;
+  left: 24%;
+  width: clamp(22px,2.5vw,38px);
+  animation-delay: 1s;
+}
+
+.deco-star2 {
+  bottom: 25%;
+  right: 27%;
+  width: clamp(26px,3vw,44px);
+  animation-delay: 1.5s;
+}
+
+/* ══════════════════════════════
+   📝 TEKS TENGAH
+══════════════════════════════ */
+.center {
+  position: relative;
+  z-index: 8;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 0 20px;
+
+  margin-top: 50px;
+}
+
+/* JUDUL */
+.main-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+
+  font-size: clamp(52px, 7.5vw, 100px);
+
+  line-height: 1;
+
+  background: linear-gradient(
+    90deg,
+    #1a2a6c 0%,
+    #4f5fcf 55%,
+    #7b5cf0 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  animation: fadeUp .7s .25s both;
+}
+
+.main-title .ai {
+  background: linear-gradient(
+    90deg,
+    #5a6ff5,
+    #9b6bf5
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* SUBTITLE */
+.subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+
+  font-size: clamp(13px, 1.8vw, 22px);
+
+  color: #1a2a6c;
+
+  letter-spacing: 1.5px;
+
+  animation: fadeUp .7s .38s both;
+}
+
+.subtitle .blue {
+  color: #4f5fcf;
+}
+
+/* DESKRIPSI */
+.description {
+  font-size: clamp(12px, 1.3vw, 16px);
+
+  color: #3a4570;
+
+  max-width: 420px;
+
+  line-height: 1.75;
+
+  font-weight: 500;
+
+  animation: fadeUp .7s .48s both;
+}
+
+/* ══════════════════════════════
+   ▶ TOMBOL PLAY
+══════════════════════════════ */
+.play-btn {
+  margin-top: 6px;
+
+  background: linear-gradient(
+    135deg,
+    #7b9ef7 0%,
+    #9a78f5 100%
+  );
+
+  color: white;
+
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+
+  font-size: clamp(22px, 3vw, 38px);
+
+  letter-spacing: 4px;
+
+  border: none;
+  border-radius: 60px;
+
+  padding: 16px 80px;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 32px rgba(120,100,240,.35);
+
+  transition:
+    transform .2s,
+    box-shadow .2s;
+
+  animation: fadeUp .7s .58s both;
+}
+
+.play-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+
+  box-shadow:
+    0 14px 40px rgba(120,100,240,.45);
+}
+
+.play-btn:active {
+  transform: scale(.96);
+}
+
+/* ══════════════════════════════
+   🎞️ ANIMASI
+══════════════════════════════ */
+@keyframes slideDown {
+  from {
+    opacity:0;
+    transform: translateX(-50%) translateY(-24px);
+  }
+
+  to {
+    opacity:1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity:0;
+    transform: scale(.7);
+  }
+
+  to {
+    opacity:1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity:0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bobble {
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* ── OVERLAY FORM ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 30, 80, 0.45);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── CARD FORM ── */
+.form-card {
+  background: white;
+  border-radius: 28px;
+  padding: 40px 44px;
+  width: clamp(300px, 90vw, 440px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 20px 60px rgba(80, 60, 200, 0.25);
+  transform: scale(.85) translateY(30px);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.overlay.active .form-card {
+  transform: scale(1) translateY(0);
+}
+
+.form-card h2 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 26px;
+  color: #1a2a6c;
+  text-align: center;
+}
+
+.form-card p {
+  font-size: 14px;
+  color: #6a7aaa;
+  text-align: center;
+  margin-top: -10px;
+}
+
+/* ── INPUT ── */
+.input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.input-group label {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: #1a2a6c;
+  padding-left: 4px;
+}
+.input-group input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #dde4ff;
+  border-radius: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #1a2a6c;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  background: #f7f9ff;
+}
+.input-group input:focus {
+  border-color: #7b9ef7;
+  box-shadow: 0 0 0 4px rgba(123,158,247,.15);
+  background: white;
+}
+.input-group input::placeholder {
+  color: #b0bce8;
+}
+
+/* ── TOMBOL MULAI ── */
+.mulai-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #7b9ef7 0%, #9a78f5 100%);
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(120,100,240,.35);
+  transition: transform .2s, box-shadow .2s;
+  margin-top: 4px;
+}
+.mulai-btn:hover  { transform: translateY(-2px) scale(1.03); box-shadow: 0 10px 30px rgba(120,100,240,.45); }
+.mulai-btn:active { transform: scale(.97); }
+
+/* ── TOMBOL TUTUP ── */
+.close-btn {
+  position: absolute;
+  top: 14px; right: 18px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #aab0cc;
+  cursor: pointer;
+  line-height: 1;
+  transition: color .2s;
+}
+.close-btn:hover { color: #4f5fcf; }
+
+.form-card-wrap {
+  position: relative;
+  width: clamp(300px, 90vw, 440px);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 30, 80, 0.45);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.form-card {
+  position: relative;
+  background: white;
+  border-radius: 28px;
+  padding: 40px 44px;
+  width: clamp(300px, 90vw, 440px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 20px 60px rgba(80,60,200,.25);
+  transform: scale(.85) translateY(30px);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.overlay.active .form-card {
+  transform: scale(1) translateY(0);
+}
+.form-card h2 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 26px;
+  color: #1a2a6c;
+  text-align: center;
+}
+.form-card > p {
+  font-size: 14px;
+  color: #6a7aaa;
+  text-align: center;
+  margin-top: -10px;
+}
+.input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.input-group label {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: #1a2a6c;
+  padding-left: 4px;
+}
+.input-group input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #dde4ff;
+  border-radius: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #1a2a6c;
+  outline: none;
+  background: #f7f9ff;
+  transition: border-color .2s, box-shadow .2s;
+}
+.input-group input:focus {
+  border-color: #7b9ef7;
+  box-shadow: 0 0 0 4px rgba(123,158,247,.15);
+  background: white;
+}
+.input-group input::placeholder { color: #b0bce8; }
+.input-group input.error        { border-color: #f77b7b; }
+.mulai-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #7b9ef7 0%, #9a78f5 100%);
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(120,100,240,.35);
+  transition: transform .2s, box-shadow .2s;
+  margin-top: 4px;
+}
+.mulai-btn:hover  { transform: translateY(-2px) scale(1.03); }
+.mulai-btn:active { transform: scale(.97); }
+.close-btn {
+  position: absolute;
+  top: 14px; right: 18px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #aab0cc;
+  cursor: pointer;
+  transition: color .2s;
+}
+.close-btn:hover { color: #4f5fcf; }

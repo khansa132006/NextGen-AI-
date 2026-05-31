@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drag & Drop – Belajar AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/game-drag.css"/>
+</head>
+<body>
+<div class="scene">
+
+  <button class="back-top" onclick="window.location.href='game.html'">
+    <span class="arrow">←</span> Pilih Game
+  </button>
+
+  <div class="page-header">
+    <span class="page-icon">🧩</span>
+    <span class="page-title">Drag &amp; Drop</span>
+  </div>
+
+  <div class="skor-box">
+    ⭐ Skor: <span id="skor">0</span> / <span id="total">0</span>
+  </div>
+
+  <div class="soal-wrap">
+    <p class="soal-label">Seret kata ke kotak definisi yang tepat!</p>
+    <div class="kata-container" id="kataContainer"></div>
+    <div class="kotak-container" id="kotakContainer"></div>
+  </div>
+
+  <div class="btn-row">
+    <button class="ulangi-btn" id="btnUlangi" onclick="ulangiGame()">🔄 Ulangi</button>
+    <button class="cek-btn" id="btnCek" onclick="cekJawaban()">Cek Jawaban ✔</button>
+  </div>
+
+  <div class="notif" id="notif"></div>
+
+</div>
+
+<div class="drag-ghost" id="dragGhost" style="display:none;"></div>
+
+<script>
+// =====================================================
+// DRAG GHOST
+// =====================================================
+const ghostEl = document.getElementById('dragGhost');
+let draggingChip = null;
+
+document.addEventListener('dragstart', function(e) {
+  const chip = e.target.closest('.kata-chip');
+  if (!chip) return;
+  draggingChip = chip;
+  ghostEl.textContent = chip.dataset.kata;
+  ghostEl.style.display = 'block';
+  const blank = document.createElement('canvas');
+  e.dataTransfer.setDragImage(blank, 0, 0);
+  ghostEl.style.left = e.clientX + 'px';
+  ghostEl.style.top  = e.clientY + 'px';
+});
+document.addEventListener('drag', function(e) {
+  if (!draggingChip || (e.clientX === 0 && e.clientY === 0)) return;
+  ghostEl.style.left = e.clientX + 'px';
+  ghostEl.style.top  = e.clientY + 'px';
+});
+document.addEventListener('dragend', function() {
+  ghostEl.style.display = 'none';
+  draggingChip = null;
+});
+
+// =====================================================
+// PATCH DROP — render pill, JANGAN sentuh data-jawaban
+// =====================================================
+document.addEventListener('drop', function(e) {
+  const kotak = e.target.closest('.kotak-drop');
+  if (!kotak) return;
+
+  // Tunggu game-drag.js selesai proses drop dulu
+  requestAnimationFrame(function() {
+    // data-isi diisi oleh game-drag.js, data-jawaban TIDAK disentuh
+    const kata = kotak.dataset.isi;
+    if (!kata) return;
+    renderPillInKotak(kotak, kata);
+  });
+}, true);
+
+function renderPillInKotak(kotak, kata) {
+  // Hapus pill lama kalau ada
+  const old = kotak.querySelector('.chip-inside');
+  if (old) old.remove();
+
+  const pill = document.createElement('span');
+  pill.className = 'chip-inside';
+  pill.textContent = kata;
+
+  // Klik pill → kembalikan chip ke atas
+  pill.addEventListener('click', function() {
+    if (kotak.classList.contains('benar') || kotak.classList.contains('salah')) return;
+    const chipUsed = document.querySelector(`.kata-chip[data-kata="${kata}"]`);
+    if (chipUsed) chipUsed.classList.remove('used');
+    kotak.classList.remove('filled');
+    kotak.innerHTML = 'Taruh di sini';
+    delete kotak.dataset.isi;
+  });
+
+  kotak.classList.add('filled');
+  kotak.innerHTML = '';
+  kotak.appendChild(pill);
+  // PENTING: data-jawaban TIDAK diubah, hanya data-isi
+  kotak.dataset.isi = kata;
+}
+
+// =====================================================
+// ULANGI
+// =====================================================
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function ulangiGame() {
+  document.getElementById('skor').textContent = '0';
+  document.getElementById('btnUlangi').classList.remove('show');
+  document.getElementById('btnCek').style.visibility = 'visible';
+
+  // Acak & reset chips
+  const kataContainer = document.getElementById('kataContainer');
+  shuffleArray(Array.from(kataContainer.querySelectorAll('.kata-chip')))
+    .forEach(el => { el.classList.remove('used'); kataContainer.appendChild(el); });
+
+  // Acak & reset kotak — PERTAHANKAN data-jawaban di tiap drop!
+  const kotakContainer = document.getElementById('kotakContainer');
+  shuffleArray(Array.from(kotakContainer.querySelectorAll('.kotak-item')))
+    .forEach((item, i) => {
+      const drop = item.querySelector('.kotak-drop');
+      if (drop) {
+        drop.classList.remove('filled', 'benar', 'salah', 'drag-over');
+        drop.innerHTML = 'Taruh di sini';
+        delete drop.dataset.isi;
+        // data-jawaban TIDAK disentuh — tetap sesuai definisi
+        drop.dataset.index = i;
+      }
+      kotakContainer.appendChild(item);
+    });
+
+  // Update nomor urut
+  kotakContainer.querySelectorAll('.kotak-nomor').forEach((nom, i) => {
+    nom.textContent = i + 1;
+  });
+
+  const notif = document.getElementById('notif');
+  notif.classList.remove('show', 'benar', 'salah');
+}
+
+// =====================================================
+// PATCH cekJawaban — tampilkan tombol ulangi setelah cek
+// =====================================================
+window.addEventListener('load', function() {
+  const origCek = window.cekJawaban;
+  if (typeof origCek === 'function') {
+    window.cekJawaban = function() {
+      // Pastikan semua pill terrender dulu baru cek
+      document.querySelectorAll('.kotak-drop.filled').forEach(function(kotak) {
+        if (!kotak.querySelector('.chip-inside')) {
+          renderPillInKotak(kotak, kotak.dataset.isi);
+        }
+      });
+      origCek();
+      setTimeout(function() {
+        document.getElementById('btnUlangi').classList.add('show');
+      }, 500);
+    };
+  }
+});
+</script>
+
+<script src="js/game-drag.js"></script>
+
+<script>
+// Patch ulang setelah game-drag.js load
+(function() {
+  const origCek = window.cekJawaban;
+  if (typeof origCek === 'function') {
+    window.cekJawaban = function() {
+      origCek();
+      setTimeout(function() {
+        document.getElementById('btnUlangi').classList.add('show');
+      }, 500);
+    };
+  }
+})();
+</script>
+
+</body>
+</html>
